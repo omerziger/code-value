@@ -1,0 +1,8 @@
+#body-container {
+  flex: 1;
+  min-height: fit-content;
+  background: rgb(248, 248, 248);
+  display: flex;
+  padding: 50px;
+  justify-content: space-evenly;
+}

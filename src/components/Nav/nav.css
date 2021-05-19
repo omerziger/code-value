@@ -1,0 +1,15 @@
+#nav {
+  background: white;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  width: 100%;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.33);
+  z-index: 1;
+}
+
+#nav h1 {
+  color: rgb(32, 32, 32);
+}
