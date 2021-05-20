@@ -13,10 +13,13 @@
 
 #products-list {
   flex: 1;
-  min-height: fit-content;
+  max-height: 74vh;
+  overflow: auto;
 }
 
 #addbtn-container {
+  height: 5vh;
+  min-height: fit-content;
   display: flex;
   justify-content: center;
 }

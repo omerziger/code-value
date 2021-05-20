@@ -66,9 +66,10 @@ const reducer = (state, action) => {
       return { productsList: editedList };
 
     case "ADD_PRODUCT":
+      const newId = state.productsList[state.productsList.length - 1].id + 1;
       const newProduct = {
-        id: state.productsList[state.productsList.length - 1].id + 1,
-        name: "Name",
+        id: newId,
+        name: `Product ${newId}`,
         price: "Price",
         description: "Description",
         img: "",
