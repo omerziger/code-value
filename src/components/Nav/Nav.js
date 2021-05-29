@@ -5,7 +5,7 @@ import "./nav.css";
 export default function Nav() {
   return (
     <div id="nav">
-      <h1>My Fruit Store</h1>
+      <h1>My Store</h1>
     </div>
   );
 }

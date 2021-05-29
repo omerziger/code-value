@@ -5,7 +5,7 @@ import Product from "../Product/Product";
 
 import { useStateValue } from "../../contexts/ProductsProvider";
 
-export default function ProductList() {
+export default function ProductsPanel() {
   const [{ productsList }, dispatch] = useStateValue();
 
   const handleDelete = (id) => {
