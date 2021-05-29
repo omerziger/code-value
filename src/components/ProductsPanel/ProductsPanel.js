@@ -3,11 +3,11 @@ import "./productsPanel.css";
 
 import Product from "../Product/Product";
 
-import { useStateValue } from "../../contexts/ProductsProvider";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function ProductsPanel() {
-  const [{ productsList }, dispatch] = useStateValue();
-
+  const productsList = useSelector((state) => state.productsList);
+  const dispatch = useDispatch();
   const handleDelete = (id) => {
     dispatch({
       type: "DELETE_PRODUCT",

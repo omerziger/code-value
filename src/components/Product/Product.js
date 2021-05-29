@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./product.css";
 
-import { useStateValue } from "../../contexts/ProductsProvider";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleActive } from "../../redux/actions";
 
 export default function Product(props) {
-  const [{ activeProduct }, dispatch] = useStateValue();
+  const activeProduct = useSelector((state) => state.activeProduct);
+  const dispatch = useDispatch();
   const [productStyle, setProductStyle] = useState();
 
   const onDelete = () => {
@@ -13,16 +15,15 @@ export default function Product(props) {
 
   const onProductClick = (e) => {
     if (e.target.id === "delete-btn") return;
-    dispatch({
-      type: "TOGGLE_ACTIVE",
-      payload: {
+    dispatch(
+      toggleActive({
         id: props.id,
         name: props.name,
         price: props.price,
         img: props.img,
         description: props.description,
-      },
-    });
+      })
+    );
   };
 
   useEffect(() => {

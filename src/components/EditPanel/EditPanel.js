@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./editPanel.css";
 
-import { useStateValue } from "../../contexts/ProductsProvider";
+import { useSelector, useDispatch } from "react-redux";
+import { saveEdit } from "../../redux/actions";
 
 export default function EditPanel() {
-  const [{ activeProduct }, dispatch] = useStateValue();
+  const activeProduct = useSelector((state) => state.activeProduct);
+  const dispatch = useDispatch();
   const [panelStyle, setPanelStyle] = useState();
   const [img, setImg] = useState("");
   const [name, setName] = useState("");
@@ -25,7 +27,7 @@ export default function EditPanel() {
     setName(e.target.value);
   };
 
-  // Set inputs data on active product !== undefined
+  // Set inputs data on active product !undefined
   useEffect(() => {
     if (!activeProduct) return;
     setImg(activeProduct.img);
@@ -44,16 +46,15 @@ export default function EditPanel() {
   const handleSave = (e) => {
     e.preventDefault();
     const form = e.target;
-    dispatch({
-      type: "SAVE_PRODUCT_EDIT",
-      payload: {
+    dispatch(
+      saveEdit({
         id: activeProduct.id,
         name: form.name.value,
         img: form.imgUrl.value,
         price: form.price.value,
         description: form.description.value,
-      },
-    });
+      })
+    );
   };
 
   return activeProduct ? (

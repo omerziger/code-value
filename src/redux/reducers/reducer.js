@@ -1,4 +1,4 @@
-export const initialState = {
+const intialState = {
   productsList: [
     {
       id: 1,
@@ -28,7 +28,7 @@ export const initialState = {
   activeProduct: undefined,
 };
 
-const reducer = (state, action) => {
+const reducer = (state = intialState, action) => {
   switch (action.type) {
     case "TOGGLE_ACTIVE":
       if (state.activeProduct === undefined)
@@ -41,7 +41,6 @@ const reducer = (state, action) => {
       )
         return { ...state, activeProduct: action.payload };
       else return state;
-
     case "DELETE_PRODUCT":
       const index = state.productsList.findIndex(
         (product) => product.id === action.payload
