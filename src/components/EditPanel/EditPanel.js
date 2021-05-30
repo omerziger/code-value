@@ -10,7 +10,7 @@ export default function EditPanel() {
   const [panelStyle, setPanelStyle] = useState();
   const [img, setImg] = useState("");
   const [name, setName] = useState("");
-  const [price, setPrice] = useState("$");
+  const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
 
   // Handle inputs
@@ -68,11 +68,23 @@ export default function EditPanel() {
         <img id="img" style={{ width: "50px" }} src={img} alt={name} />
         <div className="form-section">
           <label>Image URL</label>
-          <input required onChange={handleImgChange} id="imgUrl" value={img} />
+          <input
+            required
+            autoComplete="off"
+            onChange={handleImgChange}
+            id="imgUrl"
+            value={img}
+          />
         </div>
         <div className="form-section">
           <label>Product Name</label>
-          <input required onChange={handleNameChange} id="name" value={name} />
+          <input
+            required
+            autoComplete="off"
+            onChange={handleNameChange}
+            id="name"
+            value={name}
+          />
         </div>
         <div className="form-section" id="desc-sec">
           <label>Description</label>
@@ -87,13 +99,14 @@ export default function EditPanel() {
         <div className="form-section">
           <label>Price</label>
           <div>
+            <span id="dollar">$</span>
             <input
+              autoComplete="off"
               required
               onChange={handlePriceChange}
               id="price"
               value={price}
             />
-            <span id="dollar">$</span>
           </div>
         </div>
 

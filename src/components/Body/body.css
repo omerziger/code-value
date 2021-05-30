@@ -1,6 +1,7 @@
 #body-container {
   flex: 1;
   min-height: fit-content;
+  height: 95vh;
   background: rgb(248, 248, 248);
   display: flex;
   padding: 50px;

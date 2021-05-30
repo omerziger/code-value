@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./productsPanel.css";
 
 import Product from "../Product/Product";
@@ -8,7 +8,10 @@ import { addProduct, deleteProduct } from "../../redux/actions";
 
 export default function ProductsPanel() {
   const productsList = useSelector((state) => state.productsList);
+  const [filteredList, setFilteredList] = useState(productsList);
   const dispatch = useDispatch();
+  const [input, setInput] = useState("");
+
   const handleDelete = (id) => {
     dispatch(deleteProduct(id));
   };
@@ -17,10 +20,35 @@ export default function ProductsPanel() {
     dispatch(addProduct());
   };
 
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  // handle the search
+  useEffect(() => {
+    if (!productsList) return;
+    if (input === "") setFilteredList(productsList);
+    const newList = productsList.filter(
+      (product) =>
+        product.name.toLowerCase().includes(input) ||
+        product.description.toLowerCase().includes(input)
+    );
+    setFilteredList(newList);
+  }, [input, productsList]);
+
   return (
     <div id="products-panel">
+      <div id="search-container">
+        <input
+          id="search"
+          onChange={handleChange}
+          value={input}
+          placeholder="Search..."
+          autoComplete="off"
+        />
+      </div>
       <div id="products-list">
-        {productsList.map((product) => {
+        {filteredList.map((product) => {
           return (
             <Product
               key={product.id}

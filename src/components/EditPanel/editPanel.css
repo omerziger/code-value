@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  padding: 1rem;
+  padding: 2rem;
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.33),
     -6px -6px 20px rgba(255, 255, 255, 0.33);
 }
@@ -14,13 +14,13 @@
 #edit-panel h2 {
   color: rgb(255, 255, 255);
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.33);
+  margin-bottom: 1rem;
 }
 
 #form {
   height: 100%;
   border-radius: 10px;
   display: flex;
-  padding: 10px;
   justify-content: space-between;
 }
 
@@ -28,11 +28,14 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  padding: 10px;
+}
+
+#img {
+  aspect-ratio: 1;
 }
 
 #dollar {
-  margin-left: 10px;
+  margin-right: 1rem;
 }
 
 #form label {
