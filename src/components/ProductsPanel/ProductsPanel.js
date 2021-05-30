@@ -4,21 +4,17 @@ import "./productsPanel.css";
 import Product from "../Product/Product";
 
 import { useSelector, useDispatch } from "react-redux";
+import { addProduct, deleteProduct } from "../../redux/actions";
 
 export default function ProductsPanel() {
   const productsList = useSelector((state) => state.productsList);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
-    dispatch({
-      type: "DELETE_PRODUCT",
-      payload: id,
-    });
+    dispatch(deleteProduct(id));
   };
 
   const handleAddProduct = () => {
-    dispatch({
-      type: "ADD_PRODUCT",
-    });
+    dispatch(addProduct());
   };
 
   return (
